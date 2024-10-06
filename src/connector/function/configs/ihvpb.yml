@@ -1,0 +1,48 @@
+# Fwf description
+variables:
+  Finummer:
+    width: 9
+  Partner_finummer:
+    width: 9
+  Belastingjaar:
+    width: 4
+  Fasesoort:
+    width: 1
+  Middel:
+    width: 20
+  DatumBinnenkomst:
+    width: 8
+  Aangiftesoort:
+    width: 40
+  Volgnummer_onderneming:
+    width: 4
+  Bewering_volgnummer:
+    width: 4
+  Waarde_datum:
+    width: 8
+  Waarde_getal:
+    width: 20
+  Waarde_tekst:
+    width: 40
+  Valutacode:
+    width: 3
+  Valutafactor:
+    width: 4
+  ABS_elementnummer:
+    width: 4
+  BMG_elementnummer:
+    width: 6
+  Heftijdvak_begin:
+    width: 8
+  Heftijdvak_einde:
+    width: 8
+  Heza-soort:
+    width: 10
+  Heza-subsoort:
+    width: 10
+specs:
+  firstRowsToSkip: 1
+  type: vertical
+  variablesForStandardisation: ["ABS_elementnummer"]
+  verticalValueFields: [{"value": "Waarde_datum","type": "date"}, {"value": "Waarde_getal","type": "number"}, {"value": "Waarde_tekst","type": "text"}]
+  standardisationRules: "configs/standardisations_ihvpb.yml"

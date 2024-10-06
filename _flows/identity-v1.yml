@@ -1,0 +1,23 @@
+id: identity-v1
+inputs:
+- id: input_file
+  type: FILE
+namespace: kent.identity
+outputs:
+- id: output_file
+  type: FILE
+  value: '{{ outputs.function["outputFiles"]["output.json"] }}'
+tasks:
+- beforeCommands:
+  - PIP_CONFIG_FILE=pip.conf pip install -r requirements.txt -r function/requirements.txt
+  commands:
+  - python main.py -i input_file={{ inputs.input_file }} -c  -o output.json
+  containerImage: registry.user-np01.k8s.cbsp.nl/docker.io/python:slim
+  id: function
+  namespaceFiles:
+    enabled: true
+  outputFiles:
+  - output.json
+  taskRunner:
+    type: io.kestra.plugin.scripts.runner.docker.Docker
+  type: io.kestra.plugin.scripts.python.Commands
